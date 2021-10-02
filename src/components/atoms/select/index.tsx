@@ -4,6 +4,7 @@ interface ISelectProps extends React.HTMLAttributes<HTMLSelectElement> {
   name: string
   label: string
   placeholder?: string
+  value: string
   children:
     | React.ReactElement<typeof Option>[]
     | React.ReactElement<typeof Option>
@@ -25,11 +26,12 @@ export const Select = ({
   label,
   placeholder,
   children,
+  value,
   ...rest
 }: ISelectProps) => (
   <S.Container>
     <S.Label htmlFor={name}>{label}</S.Label>
-    <S.Select {...rest}>
+    <S.Select {...rest} value={value}>
       {placeholder && (
         <option value="" selected disabled>
           {placeholder}
